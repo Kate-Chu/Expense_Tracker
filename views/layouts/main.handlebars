@@ -7,6 +7,52 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
     <title>廣志の私帳</title>
   </head>
+  <header>
+      <!-- navigation -->
+      <nav class="navbar navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            <img
+              src="/img/budget.png"
+              width="30"
+              height="30"
+              class="d-inline-block align-top"
+              alt="我的餐廳清單"
+            />
+            家庭記帳本
+          </a>
+
+          {{#if isAuthenticated}}
+            <div class="d-flex">
+              <a
+                class="btn btn-outline-success d-flex flex-column align-items-center text-decoration-none "
+                href="/restaurants/create"
+              >Create
+              </a>
+              <a
+                class="btn btn-outline-success d-flex flex-column align-items-center text-decoration-none "
+                style="margin-left: 10%;;"
+                href="/users/logout"
+              >Logout
+              </a>
+            </div>
+          {{else}}
+            <div class="d-flex">
+              <a
+                class="btn btn-outline-success d-block text-decoration-none "
+                href="/users/login"
+              >Login
+              </a>
+              <a
+                class="btn btn-outline-success text-decoration-none  ms-2"
+                style="margin-left: 10%;"
+                href="/users/register"
+              >Register
+              </a>
+            </div>
+          {{/if}}
+        </div>
+      </nav>
   <body>
     {{{body}}}
     <script src="/javascript/popper.min.js"></script>
