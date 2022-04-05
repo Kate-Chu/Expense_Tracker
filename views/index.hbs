@@ -1,4 +1,26 @@
 </header>
-<main class="container">
+
+<main class="container d-flex flex-column justify-content-center align-items-center mt-5">
   <h1>Index</h1>
+  <table class="table w-75 table-striped">
+    <tbody>
+  {{#each expenses}}
+  <tr  class="row d-flex flex-row ">
+    <th scope="row" class="col-2 align-self-stretch d-flex align-items-center">{{this.category}}</th>
+    <td class="col-5 ">
+      <p>{{this.name}}</p>
+      <p class="mb-0">{{this.date}}</p>
+    </td>
+    <td class="col-1 align-self-stretch d-flex align-items-center justify-content-center">{{this.amount}}</td>
+    <td class="col-2 align-self-stretch d-flex align-items-center justify-content-end"><a href="/expenses/{{this._id}}/edit" class="btn btn-outline-secondary ">修改</a></td>
+    <td class="col-2 align-self-stretch d-flex align-items-center">
+      <form action="/expenses/{{this._id}}?_method=DELETE" method="POST" class="m-auto">
+        <button type="submit" class="btn btn-secondary">刪除</button>
+      </form>
+    </td>
+  </tr>
+  {{/each}}
+  </tbody>
+</table>
+  <form action="/expenses/create"><button class="btn btn-create mt-5" >新增支出</button></form>
 </main>

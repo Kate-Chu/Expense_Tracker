@@ -1,0 +1,25 @@
+.btn-register,
+.btn-login,
+.btn-logout {
+  background-color: none;
+  border-color: #333;
+  color: #df603b;
+}
+
+.btn-register:hover,
+.btn-login:hover,
+.btn-logout:hover {
+  background-color: #d44f27;
+  color: #eff;
+}
+
+.btn-create {
+  background-color: #df603b;
+  color: #eee;
+  border-color: #333;
+}
+
+.btn-create:hover {
+  background-color: #d44f27;
+  color: #eff;
+}
