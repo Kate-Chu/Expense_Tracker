@@ -1,25 +1,43 @@
-.btn-register,
-.btn-login,
-.btn-logout {
+.btn-orange {
+  background-color: #df603b;
+  color: #eff;
+  border-color: #333;
+}
+
+.btn-orange:hover {
+  background-color: #ec7b57;
+  color: #fff;
+  border-color: #333;
+}
+
+.btn-outline-orange {
   background-color: none;
   border-color: #333;
   color: #df603b;
 }
 
-.btn-register:hover,
-.btn-login:hover,
-.btn-logout:hover {
+.btn-outline-orange:hover {
   background-color: #d44f27;
   color: #eff;
-}
-
-.btn-create {
-  background-color: #df603b;
-  color: #eee;
-  border-color: #333;
 }
 
 .btn-create:hover {
   background-color: #d44f27;
   color: #eff;
+}
+
+.fs-4rem {
+  font-size: 4rem;
+}
+
+.text-orange {
+  color: #ec7b57;
+}
+
+.tx-12px {
+  font-size: 12px;
+}
+
+.tx-16px {
+  font-size: 16px;
 }

@@ -4,7 +4,6 @@
     action="/expenses/{{expense._id}}/edit?_method=PUT"
     method="POST"
     class="needs-validation w-100 d-flex flex-column justify-content-center align-items-center mt-3"
-    novalidate
   >
     <div class="row w-md-100 w-50 ">
       <p class="col col-4"><i class="text-danger">* </i>必填欄位</p>
@@ -21,7 +20,7 @@
     <div class="row w-md-100 w-50 mt-4">
       <label for="category" class="form-label  col-4 fs-4">類別<i class="text-danger">* </i>：</label>
       <select class="form-select col-8 w-50 " aria-label="Default select example" name="category" required>
-        <option selected>Open this select menu</option>
+        <option selected>--請選擇--</option>
         <option value="家居物業">家居物業</option>
         <option value="交通出行">交通出行</option>
         <option value="休閒娛樂">休閒娛樂</option>
@@ -33,7 +32,9 @@
       <label for="amount" class="form-label  col-4 fs-4">金額<i class="text-danger">* </i>：</label>
       <input type="text" id="amount" name="amount" class="form-control col-8 w-50" required value="{{expense.amount}}" placeholder="支出金額"/>
     </div>
-
-      <button type="submit" class="btn btn-create mt-5">送出</button>
+    <div class="mt-5">
+      <a href="/expenses"  class="btn btn-outline-orange me-5">返回</a>
+      <button type="submit" class="btn btn-orange">送出</button>
+    </div>
   </form>
 </div>
