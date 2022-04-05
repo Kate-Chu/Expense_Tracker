@@ -6,6 +6,8 @@ const methodOverride = require("method-override");
 const routes = require("./routes");
 const session = require("express-session");
 require("./config/mongoose");
+const usePassport = require("./config/passport");
+
 
 app.engine("hbs", expHbs.engine({ defaultLayout: "main" }));
 app.set("view engine", "hbs");
@@ -20,6 +22,8 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+usePassport(app);
 
 app.use(routes);
 
