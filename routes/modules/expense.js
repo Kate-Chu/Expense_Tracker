@@ -16,14 +16,18 @@ router.get("/create", (req, res) => {
 router.post("/create", async (req, res) => {
   const index = (await Expense.find()).length + 1;
   const { name, date, category, amount } = req.body;
+  const user = User.findById(req.user._id);
   const newExpense = await Expense.create({
-    id: index,
+    index,
     name,
     date,
     category,
     amount,
+    userId: req.user._id,
   });
   await newExpense.save();
+  await user.expenseId.push(newExpense._id);
+  await user.save();
 
   res.redirect("/expenses");
 });

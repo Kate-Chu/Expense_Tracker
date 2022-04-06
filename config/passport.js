@@ -12,11 +12,11 @@ module.exports = (app) => {
       async (req, email, password, done) => {
         const user = await User.findOne({ email });
         if (!user) {
-          return done(null, false, req.flash("error", "email incorrect"));
+          return done(null, false, req.flash("error", "信箱或密碼不正確"));
         }
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-          return done(null, false, req.flash("error", "password incorrect"));
+          return done(null, false, req.flash("error", "信箱或密碼不正確"));
         }
         return done(null, user);
       }

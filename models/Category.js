@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const categorySchema = new Schema({
+  index: {
+    type: Number,
+    required: true,
+  },
   id: {
     type: Number,
   },
