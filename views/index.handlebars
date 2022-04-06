@@ -1,18 +1,20 @@
 </header>
 
-<main class="container d-flex flex-column justify-content-center align-items-center mt-4">
+<main class="container d-flex flex-column justify-content-center align-items-center mt-4 mb-5">
   <div class="row w-50 mt-4">
-    <select class="form-select col-8 w-50 " aria-label="Default select example" name="category" >
+    <form action="/expenses/select" class="m-0">
+    <select onchange="submit()" class="form-select col-8 w-50 " aria-label="Default select example" name="category" >
       <option>類別</option>
-      <option value="家居物業">家居物業</option>
-      <option value="交通出行">交通出行</option>
-      <option value="休閒娛樂">休閒娛樂</option>
-      <option value="餐飲食品">餐飲食品</option>
-      <option value="其他">其他</option>
+      <option value="家居物業" name="家居物業">家居物業</option>
+      <option value="交通出行" name="交通出行">交通出行</option>
+      <option value="休閒娛樂" name="休閒娛樂">休閒娛樂</option>
+      <option value="餐飲食品" name="餐飲食品">餐飲食品</option>
+      <option value="其他" name="其他">其他</option>
     </select>
+    </form>
   </div>
   
-  <div class="row d-flex flex-row w-50 mt-5 mb-4">
+  <div class="row d-flex flex-row w-75 mt-5 mb-4">
     <div class="col-4 fs-4">總金額：
     </div>
     <div class="col-8 fs-4rem text-orange" id="totalAmount">39090</div>
@@ -22,10 +24,21 @@
     <tbody>
     {{#each expenses}}
     <tr  class="row d-flex flex-row ">
-    <th scope="row" class="col-1 align-self-stretch d-flex align-items-center">{{this.category}}</th>
-    <td class="col-6 ">
+    <th scope="row" class="col-1 align-self-stretch d-flex align-items-center">
+      <img
+              src="/img/budget.png"
+              width="30"
+              height="30"
+              class="d-inline-block align-top"
+              alt="我的餐廳清單"
+            />
+    </th>
+    <td class="col-4 ">
       <p class="tx-16px">{{this.name}}</p>
       <p class="mb-0 tx-12px">{{this.date}}</p>
+    </td>
+    <td class="col-2 d-flex align-items-center">
+      <p class="mb-0 tx-14px">{{this.category}}</p>
     </td>
     <td class="col-1 align-self-stretch d-flex align-items-center justify-content-center">{{this.amount}}</td>
     <td class="col-2 align-self-stretch d-flex align-items-center justify-content-end"><a href="/expenses/{{this._id}}/edit" class="btn btn-outline-secondary ">修改</a></td>
@@ -38,5 +51,5 @@
   {{/each}}
   </tbody>
 </table>  
-  <form action="/expenses/create"><button class="btn btn-orange mt-5" >新增支出</button></form>
+  <form action="/expenses/create"><button class="btn btn-orange mt-5 mb-5" >新增支出</button></form>
 </main>

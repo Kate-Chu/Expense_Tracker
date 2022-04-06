@@ -35,7 +35,12 @@ router.post("/register", async (req, res) => {
   }
 
   const hashPassword = await bcrypt.hash(password, 10);
-  await User.create({ name, email, password: hashPassword });
+  const newUser = await User.create({
+    name,
+    email,
+    password: hashPassword,
+  });
+  newUser.save();
   return res.redirect("/");
 });
 
@@ -46,7 +51,7 @@ router.get("/login", (req, res) => {
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/expenses",
     failureFlash: true,
     failureRedirect: "/users/login",
   })
