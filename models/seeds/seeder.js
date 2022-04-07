@@ -1,5 +1,5 @@
 const db = require("../../config/mongoose");
-const User = require("../user");
+const User = require("../User");
 const Expense = require("../Expense");
 const Category = require("../Category");
 const bcrypt = require("bcryptjs");
