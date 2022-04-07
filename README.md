@@ -1,6 +1,6 @@
 # 我的餐廳清單
 
-![image](https://github.com/Kate-Chu/Expense_Tracker/blob/main/public/imgs/intro.png)
+![image](https://github.com/Kate-Chu/Expense_Tracker/blob/main/public/img/intro.png)
 
 ## Features - 產品功能
 
