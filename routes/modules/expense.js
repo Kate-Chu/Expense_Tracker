@@ -167,7 +167,11 @@ router.get("/select", async (req, res) => {
   const expenses = await Expense.find({ category: query, userId })
     .populate("categoryId", "htmlClass")
     .lean();
-  res.render("index", { expenses });
+  let totalAmount = 0;
+  for await (const expense of expenses) {
+    totalAmount += expense.amount;
+  }
+  res.render("index", { expenses, totalAmount });
 });
 
 module.exports = router;
