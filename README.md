@@ -1,7 +1,11 @@
-# 我的餐廳清單
+# 個人記帳本
 
 ![image](https://github.com/Kate-Chu/Expense_Tracker/blob/main/public/img/login.png)
 ![image](https://github.com/Kate-Chu/Expense_Tracker/blob/main/public/img/example.png)
+
+## Heroku - 雲端部署版本
+
+Heroku Link: https://vast-mesa-59472.herokuapp.com/users/login
 
 ## Features - 產品功能
 
