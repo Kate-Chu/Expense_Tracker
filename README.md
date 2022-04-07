@@ -5,7 +5,7 @@
 
 ## Heroku - 雲端部署版本
 
-Heroku Link: https://vast-mesa-59472.herokuapp.com/users/login
+<b>Heroku Link</b>: https://vast-mesa-59472.herokuapp.com/users/login
 
 ## Features - 產品功能
 
@@ -50,7 +50,7 @@ nodemon app.js
 Express is listening on localhost:3000
 ```
 
-8. 開啟任一瀏覽器，輸入 [http://localhost:3000](http://localhost:3000) ，或 (MacOS 系統) 在終端機中按住 Command 鍵點選 [http://localhost:3000]，即可開始使用我的餐廳清單網頁
+8. 開啟任一瀏覽器，輸入 [http://localhost:3000](http://localhost:3000) ，或 (MacOS 系統) 在終端機中按住 Command 鍵點選 [http://localhost:3000]，即可開始使用記帳網頁
 
 9. 在終端機按下 control + C 即可結束程式
 
