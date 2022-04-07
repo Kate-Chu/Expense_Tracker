@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT;
 const expHbs = require("express-handlebars");
 const methodOverride = require("method-override");
 const routes = require("./routes");
@@ -11,6 +10,7 @@ const flash = require("connect-flash");
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
+const port = process.env.PORT;
 
 expHbs.create({
   helpers: {

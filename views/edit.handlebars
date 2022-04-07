@@ -21,7 +21,7 @@
     <div class="row w-md-100 w-50 mt-4">
       <label for="category" class="form-label  col-4 fs-4">類別<i class="text-danger">* </i>：</label>
       <select class="form-select col-8 w-50 " aria-label="Default select example" name="category" required>
-      <option>--請選擇--</option>
+      <option value="">--請選擇--</option>
       {{#each categories}}
       <option value="{{this}}" {{select this expense.category}}>{{this}}</option>
       {{/each}}

@@ -66,7 +66,7 @@ router.post("/create", async (req, res) => {
   const categoryDb = await Category.find({ category });
   if (categoryDb.length) {
     categoryDb[0].expenseId.push(newExpense._id);
-    categoryDb[0].save();
+    await categoryDb[0].save();
     newExpense.categoryId = categoryDb[0]._id;
   } else {
     const newCategory = new Category({
@@ -77,7 +77,7 @@ router.post("/create", async (req, res) => {
     newExpense.categoryId = newCategory._id;
     await newCategory.save();
   }
-  newExpense.save();
+  await newExpense.save();
   res.redirect("/expenses");
 });
 
@@ -113,8 +113,7 @@ router.put("/:id/edit", async (req, res) => {
       category: expense.category,
     });
     await originCatDb[0].expenseId.splice(
-      originCatDb[0].expenseId.indexOf(expense._id),
-      1
+      originCatDb[0].expenseId.indexOf(expense._id)
     );
     originCatDb[0].save();
 
@@ -123,7 +122,6 @@ router.put("/:id/edit", async (req, res) => {
       newCatDb[0].expenseId.push(expense._id);
       await newCatDb[0].save();
       expense.categoryId = newCatDb[0]._id;
-      expense.save();
     } else {
       const newCategory = new Category({
         category: subCategory,
@@ -132,8 +130,8 @@ router.put("/:id/edit", async (req, res) => {
       });
       await newCategory.save();
       expense.categoryId = newCategory._id;
-      expense.save();
     }
+    await expense.save();
   }
   await Expense.findByIdAndUpdate(id, { ...req.body });
 
