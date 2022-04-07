@@ -9,6 +9,14 @@ require("./config/mongoose");
 const usePassport = require("./config/passport");
 const flash = require("connect-flash");
 
+// const hbs = expHbs.create({
+//   helpers: {
+//     select: function (value1, value2) {
+//       return value1 === value2 ? "selected" : "";
+//     },
+//   },
+// });
+
 app.engine("handlebars", expHbs.engine({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 

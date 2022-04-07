@@ -13,7 +13,7 @@ const categorySchema = new Schema({
       ref: "Expense",
     },
   ],
-  iconUrl: {
+  htmlClass: {
     type: String,
   },
 });

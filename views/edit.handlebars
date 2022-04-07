@@ -8,6 +8,7 @@
     <div class="row w-md-100 w-50 ">
       <p class="col col-4"><i class="text-danger">* </i>必填欄位</p>
       <h4 class="col col-8" >請修改你的支出</h4>
+      {{>message}}
     </div>
     <div class="row w-md-100 w-50 mt-4">
       <label for="name" class="form-label  col-4 fs-4">名稱<i class="text-danger">* </i>：</label>
@@ -20,12 +21,10 @@
     <div class="row w-md-100 w-50 mt-4">
       <label for="category" class="form-label  col-4 fs-4">類別<i class="text-danger">* </i>：</label>
       <select class="form-select col-8 w-50 " aria-label="Default select example" name="category" required>
-        <option selected>--請選擇--</option>
-      <option value="家居物業">家居物業</option>
-      <option value="交通出行">交通出行</option>
-      <option value="休閒娛樂">休閒娛樂</option>
-      <option value="餐飲食品">餐飲食品</option>
-      <option value="其他">其他</option>
+      <option>--請選擇--</option>
+      {{#each categories}}
+      <option value="{{this}}" {{select this expense.category}}>{{this}}</option>
+      {{/each}}
       </select>
     </div>
     <div class="row w-md-100 w-lg-75 w-50 mt-4">

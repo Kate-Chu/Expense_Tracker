@@ -3,7 +3,7 @@
 <main class="container d-flex flex-column justify-content-center align-items-center mt-4 mb-5">
   <div class="row w-50 mt-4">
     <form action="/expenses/select" class="m-0">
-    <select onchange="submit()" class="form-select col-8 w-50 " aria-label="Default select example" name="category" >
+    <select onchange="submit()" class="form-select col-8 w-50 " aria-label="Default select example" name="sort" >
       <option>類別</option>
       <option value="家居物業" name="家居物業">家居物業</option>
       <option value="交通出行" name="交通出行">交通出行</option>
@@ -17,21 +17,15 @@
   <div class="row d-flex flex-row w-75 mt-5 mb-4">
     <div class="col-4 fs-4">總金額：
     </div>
-    <div class="col-8 fs-4rem text-orange" id="totalAmount">39090</div>
+    <div class="col-8 fs-4rem text-orange" id="totalAmount">{{totalAmount}}</div>
   </div>
 
   <table class="table w-75 table-striped">
     <tbody>
     {{#each expenses}}
     <tr  class="row d-flex flex-row ">
-    <th scope="row" class="col-1 align-self-stretch d-flex align-items-center">
-      <img
-              src="/img/budget.png"
-              width="30"
-              height="30"
-              class="d-inline-block align-top"
-              alt="我的餐廳清單"
-            />
+    <th scope="row" class="col-1 align-self-stretch d-flex justify-content-center align-items-center">
+      <i class="{{this.categoryId.htmlClass}} fa-xl text-info "></i>
     </th>
     <td class="col-4 ">
       <p class="tx-16px">{{this.name}}</p>
@@ -51,5 +45,5 @@
   {{/each}}
   </tbody>
 </table>  
-  <form action="/expenses/create"><button class="btn btn-orange mt-5 mb-5" >新增支出</button></form>
+  <a href="/expenses/create"><button class="btn btn-orange mt-5 mb-5" >新增支出</button></a>
 </main>
