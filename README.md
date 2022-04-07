@@ -27,7 +27,7 @@ git clone https://github.com/Kate-Chu/Expense_Tracker.git
 3. 開啟終端機，進入存放此專案的資料夾
 
 ```
-cd restaurantList
+cd Expense_Tracker
 ```
 
 4. 根據 .env.example 設定 .env
@@ -56,16 +56,16 @@ Express is listening on localhost:3000
 
 ## Development Tools - 開發者工具
 
-1. bcryptjs v2.4.3,
-2. body-parser v1.19.2,
-3. connect-flash v0.1.1,
-4. dotenv v16.0.0,
-5. express v4.16.4,
-6. express-handlebars v6.0.3,
-7. express-session v1.17.2,
-8. method-override v3.0.0,
-9. mongoose v6.2.4,
-10. passport v0.5.2,
-11. passport-facebook v3.0.0,
-12. passport-local v1.0.0,
+1. bcryptjs v2.4.3
+2. body-parser v1.19.2
+3. connect-flash v0.1.1
+4. dotenv v16.0.0
+5. express v4.16.4
+6. express-handlebars v6.0.3
+7. express-session v1.17.2
+8. method-override v3.0.0
+9. mongoose v6.2.4
+10. passport v0.5.2
+11. passport-facebook v3.0.0
+12. passport-local v1.0.0
 13. serve v13.0.2
