@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "serve -s build",
     "dev": "nodemon app.js",
     "seed": "node models/seeds/seeder.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "npm run build"
   },
   "author": "",
   "license": "ISC",
-    "dependencies": {
+  "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
     "connect-flash": "^0.1.1",
@@ -24,6 +25,7 @@
     "node-sass": "^7.0.1",
     "passport": "^0.5.2",
     "passport-facebook": "^3.0.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "serve": "^13.0.2"
   }
 }
