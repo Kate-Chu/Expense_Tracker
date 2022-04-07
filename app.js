@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 const expHbs = require("express-handlebars");
 const methodOverride = require("method-override");
 const routes = require("./routes");
@@ -8,14 +8,17 @@ const session = require("express-session");
 require("./config/mongoose");
 const usePassport = require("./config/passport");
 const flash = require("connect-flash");
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
-// const hbs = expHbs.create({
-//   helpers: {
-//     select: function (value1, value2) {
-//       return value1 === value2 ? "selected" : "";
-//     },
-//   },
-// });
+expHbs.create({
+  helpers: {
+    select: function (value1, value2) {
+      return value1 === value2 ? "selected" : "";
+    },
+  },
+});
 
 app.engine("handlebars", expHbs.engine({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -25,7 +28,7 @@ app.use(express.static("public"));
 app.use(methodOverride("_method"));
 app.use(
   session({
-    secret: "FinancialFreedom!!",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   })
