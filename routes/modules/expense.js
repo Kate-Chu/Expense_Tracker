@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../../models/User");
 const Category = require("../../models/Category");
 const Expense = require("../../models/Expense");
+const moment = require("moment");
 
 const CATEGORY = {
   家居物業: {
@@ -34,6 +35,7 @@ router.get("/", async (req, res) => {
     .lean();
   let totalAmount = 0;
   for await (const expense of expenses) {
+    expense.date = moment(expense.date).format("YYYY-MM-DD");
     totalAmount += expense.amount;
   }
   res.render("index", { expenses, totalAmount });
@@ -86,6 +88,7 @@ router.get("/:id/edit", async (req, res) => {
   const { id } = req.params;
   const categories = Object.keys(CATEGORY);
   const expense = await Expense.findById(id).lean();
+  expense.date = moment(expense.date).format("YYYY-MM-DD");
   res.render("edit", {
     expense,
     categories,
@@ -167,6 +170,7 @@ router.get("/select", async (req, res) => {
     .lean();
   let totalAmount = 0;
   for await (const expense of expenses) {
+    expense.date = moment(expense.date).format("YYYY-MM-DD");
     totalAmount += expense.amount;
   }
   res.render("index", { expenses, totalAmount });
