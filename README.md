@@ -52,13 +52,14 @@ Express is listening on localhost:3000
 
 8. 開啟任一瀏覽器，輸入 [http://localhost:3000](http://localhost:3000) ，或 (MacOS 系統) 在終端機中按住 Command 鍵點選 [http://localhost:3000]，即可開始使用記帳網頁
 
-
 9. 可使用種子資料登入查看
+
 ```
 user1:
 email: mary@example.com
 password: 123
 ```
+
 ```
 user2:
 email: marc@example.com
@@ -82,3 +83,4 @@ password: 123
 11. passport-facebook v3.0.0
 12. passport-local v1.0.0
 13. serve v13.0.2
+14. moment v2.29.2
