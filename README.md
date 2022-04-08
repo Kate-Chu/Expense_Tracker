@@ -52,7 +52,20 @@ Express is listening on localhost:3000
 
 8. 開啟任一瀏覽器，輸入 [http://localhost:3000](http://localhost:3000) ，或 (MacOS 系統) 在終端機中按住 Command 鍵點選 [http://localhost:3000]，即可開始使用記帳網頁
 
-9. 在終端機按下 control + C 即可結束程式
+
+9. 可使用種子資料登入查看
+```
+user1:
+email: mary@example.com
+password: 123
+```
+```
+user2:
+email: marc@example.com
+password: 123
+```
+
+10. 在終端機按下 control + C 即可結束程式
 
 ## Development Tools - 開發者工具
 
