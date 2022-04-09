@@ -89,6 +89,7 @@ router.get("/:id/edit", async (req, res) => {
   const categories = Object.keys(CATEGORY);
   const expense = await Expense.findById(id).lean();
   expense.date = moment(expense.date).format("YYYY-MM-DD");
+
   res.render("edit", {
     expense,
     categories,

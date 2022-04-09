@@ -23,7 +23,7 @@
       <select class="form-select col-8 w-50 " aria-label="Default select example" name="category" required>
       <option value="">--請選擇--</option>
       {{#each categories}}
-      <option value="{{this}}" {{select this expense.category}}>{{this}}</option>
+      <option value="{{this}}" {{select ../expense.category this}}>{{this}}</option>
       {{/each}}
       </select>
     </div>
