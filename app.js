@@ -12,14 +12,6 @@ if (process.env.NODE_ENV !== "production") {
 }
 const port = process.env.PORT;
 
-expHbs.create({
-  helpers: {
-    select: function (value1, value2) {
-      return value1 === value2 ? "selected" : "";
-    },
-  },
-});
-
 app.engine("handlebars", expHbs.engine({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
