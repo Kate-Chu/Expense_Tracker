@@ -30,6 +30,7 @@ const CATEGORY = {
 
 router.get("/", async (req, res) => {
   const userId = req.user._id;
+  const categories = Object.keys(CATEGORY);
   const expenses = await Expense.find({ userId })
     .populate("categoryId", "htmlClass")
     .lean();
@@ -38,7 +39,16 @@ router.get("/", async (req, res) => {
     expense.date = moment(expense.date).format("YYYY-MM-DD");
     totalAmount += expense.amount;
   }
-  res.render("index", { expenses, totalAmount });
+  res.render("index", {
+    expenses,
+    categories,
+    totalAmount,
+    helpers: {
+      select: function (value1, value2) {
+        return value1 === value2 ? "selected" : "";
+      },
+    },
+  });
 });
 
 // 增加
@@ -166,6 +176,7 @@ router.delete("/:id", async (req, res) => {
 router.get("/select", async (req, res) => {
   const query = req.query.sort;
   const userId = req.user._id;
+  const categories = Object.keys(CATEGORY);
   const expenses = await Expense.find({ category: query, userId })
     .populate("categoryId", "htmlClass")
     .lean();
@@ -174,7 +185,17 @@ router.get("/select", async (req, res) => {
     expense.date = moment(expense.date).format("YYYY-MM-DD");
     totalAmount += expense.amount;
   }
-  res.render("index", { expenses, totalAmount });
+  res.render("index", {
+    query,
+    expenses,
+    categories,
+    totalAmount,
+    helpers: {
+      select: function (value1, value2) {
+        return value1 === value2 ? "selected" : "";
+      },
+    },
+  });
 });
 
 module.exports = router;

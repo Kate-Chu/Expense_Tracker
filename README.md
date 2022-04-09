@@ -55,13 +55,13 @@ Express is listening on localhost:3000
 9. 可使用種子資料登入查看
 
 ```
-user1:
+<i>user1</i>
 email: mary@example.com
 password: 123
 ```
 
 ```
-user2:
+<i>user2</i>
 email: marc@example.com
 password: 123
 ```
