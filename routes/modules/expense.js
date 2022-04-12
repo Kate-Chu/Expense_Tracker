@@ -101,7 +101,8 @@ router.put("/:id/edit", async (req, res) => {
       category: expense.category,
     });
     await originCatDb[0].expenseId.splice(
-      originCatDb[0].expenseId.indexOf(expense._id)
+      originCatDb[0].expenseId.indexOf(expense._id),
+      1
     );
     originCatDb[0].save();
 
@@ -125,13 +126,11 @@ router.delete("/:id", async (req, res) => {
 
   user.expenseId.splice(user.expenseId.indexOf(expense._id), 1);
   user.save();
-
   categoryDb[0].expenseId.splice(
     categoryDb[0].expenseId.indexOf(expense._id),
     1
   );
   categoryDb[0].save();
-
   await Expense.findByIdAndDelete(id);
   res.redirect("/expenses");
 });
