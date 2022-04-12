@@ -6,29 +6,7 @@ const bcrypt = require("bcryptjs");
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
-
-const CATEGORY = {
-  家居物業: {
-    url: "https://fontawesome.com/icons/home?style=solid",
-    htmlClass: "fa-solid fa-house",
-  },
-  交通出行: {
-    url: "https://fontawesome.com/icons/shuttle-van?style=solid",
-    htmlClass: "fa-solid fa-van-shuttle",
-  },
-  休閒娛樂: {
-    utl: "https://fontawesome.com/icons/grin-beam?style=solid",
-    htmlClass: "fa-solid fa-face-grin-beam",
-  },
-  餐飲食品: {
-    url: "https://fontawesome.com/icons/utensils?style=solid",
-    htmlClass: "fa-solid fa-utensils",
-  },
-  其他: {
-    url: "https://fontawesome.com/icons/pen?style=solid",
-    htmlClass: "fa-solid fa-pen",
-  },
-};
+const CATEGORY = require("./category_data").results;
 
 const SEED_DATA = [
   {
@@ -40,7 +18,7 @@ const SEED_DATA = [
         name: "HR",
         date: "2022-03-17",
         category: "家居物業",
-        amount: 1000,
+        amount: 5299,
       },
       {
         name: "加油",
@@ -83,8 +61,18 @@ const SEED_DATA = [
   },
 ];
 
+const addCategoryDate = async () => {
+  for (const item of CATEGORY) {
+    const newCategory = new Category({
+      category: item.title,
+      htmlClass: item.htmlClass,
+    });
+    await newCategory.save();
+  }
+};
+
 const addSeedData = async () => {
-  for await (let user of SEED_DATA) {
+  for (const user of SEED_DATA) {
     const hashPassword = await bcrypt.hash(user.password, 10);
     const newUser = await new User({
       name: user.name,
@@ -94,7 +82,7 @@ const addSeedData = async () => {
     await newUser.save();
 
     const seedExpenses = user.expense;
-    for await (let expense of seedExpenses) {
+    for (const expense of seedExpenses) {
       const newExpense = new Expense({
         name: expense.name,
         date: expense.date,
@@ -107,25 +95,16 @@ const addSeedData = async () => {
       await newUser.save();
 
       const categoryDb = await Category.find({ category: expense.category });
-      if (categoryDb.length) {
-        categoryDb[0].expenseId.push(newExpense._id);
-        await categoryDb[0].save();
-        newExpense.categoryId = categoryDb[0]._id;
-      } else {
-        const newCategory = new Category({
-          category: expense.category,
-          expenseId: newExpense._id,
-          htmlClass: CATEGORY[expense.category].htmlClass,
-        });
-        await newCategory.save();
-        newExpense.categoryId = newCategory._id;
-      }
+      categoryDb[0].expenseId.push(newExpense._id);
+      await categoryDb[0].save();
+      newExpense.categoryId = categoryDb[0]._id;
       await newExpense.save();
     }
   }
 };
 
 db.once("open", async () => {
+  await addCategoryDate();
   await addSeedData();
   process.exit();
 });
