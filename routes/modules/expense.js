@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
     .populate("categoryId", "htmlClass")
     .lean();
   let totalAmount = 0;
-  for await (const expense of expenses) {
+  for (const expense of expenses) {
     expense.date = moment(expense.date).format("YYYY-MM-DD");
     totalAmount += expense.amount;
   }
